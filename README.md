@@ -9,7 +9,7 @@
 2，资源热更及管理基于YooAsset  
 3，框架基于GameFramework，并修改支持HybridCLR及YooAsset。  
 并实现，Jenkins自动多渠道打包，白名单灰度测试，一键发布热更资源及版本回退。  
-[【为什么不使用用Addressable，或者其他资源管理】](Tools/ReadMe/Resources.md) 。  
+[【为什么不使用用Addressable，或者其他资源管理】](https://www.yooasset.com/docs/Introduce)   
   
 ### 通过这个项目可以了解到  
 （1）框架为项目中提供基础功能，如资源管理、UI框架、网络通信、消息管理、场景管理、数据解析及存取等，同时定义了一系列规范包括编码的，例如参数命名、注释、缩进等  
@@ -28,7 +28,7 @@
 ## 二、项目包含一个完整的小游戏实例  
 
 ### 游戏介绍  
-基于GameFramework框架实现的塔防游戏，将资源模块改为Addressable，并接入HybridCLR代码热更。  
+基于GameFramework框架实现的塔防游戏，将资源模块改为YooAsset，并接入HybridCLR代码热更。  
 
 ![Image](Tools/ReadMe/TowerDefense.png)   
    
@@ -45,22 +45,22 @@
 
 ## 三、如何让项目运行并实现热更及资源管理  
 
+### 游戏入口流程
+(1)在Main场景下，对资源进行预下载（可以通过玩家的UID添加白名单测试）    
+(2)加载完资源会调用初始化LoadDll,加载热更Dll   
+(3)加载完Dll切换热更场景，进入热更模块   
+
+### 资源管理操作
+点击执行YooAsset/AssetBundle Collector，用于管理资源，这里通过成品资源对生资源依赖，进行加载，实现包体内零冗余   
+(1)实现了启动场景热更新，在第二次进入游戏时实现更新  
+(2)实现了玩家边玩边下载  
+(3)玩家自己选择下载关卡内容  
+注意：生资源，成品资源路径区分  
+
 ### HybridCLR编辑器操作
 (1)点击执行HybridCLR/Installer打开一个窗体，点击Install等待安装完成  
 (2)点击执行HybridCLR/Generate/All, 等待执行完毕    
 (3)点击执行HybridCLR/Build/BuildAssetsAndCopyToRes,将Dll生成并拷贝到资源文件夹中   
-
-### 资源管理操作
-点击执行YooAsset/AssetBundle Collector，用于管理资源，这里通过成品资源对生资源依赖，进行加载，实现包体内零冗余   
-（1）实现了启动场景热更新，在第二次进入游戏时实现更新  
-（2）实现了玩家边玩边下载  
-（3）玩家自己选择下载关卡内容  
-注意：生资源，成品资源路径区分  
-
-### 游戏入口流程
-(1)在Main场景下，对资源进行预下载（通过玩家的UID添加白名单测试）    
-(2)加载完资源会调用初始化LoadDll,加载热更Dll   
-(3)加载完Dll切换热更场景，进入热更模块   
 
 ### YooAsset 实现本地模拟
 需要利用HFS搭建一个本地服务器，确保手机和电脑处于同一网络，便可实现热更  
@@ -118,15 +118,19 @@ isLocalPack：(bool git分支验收，将所有资源打入包内)；
 (1)CDN服务器缓存问题，不能及时获取到hash, json（访问根节点耗时太久，改为文件名添加时间戳）   
 (2)版本灰度问题，白名单ID问题 （采用后端生成的uid，设备id有权限申请问题）    
 
-### 参考  
-代码热更基于[HybridCLR跳转](https://github.com/focus-creative-games/HybridCLR)  
-资源热更基于[YooAsset跳转](https://www.yooasset.com/)     
-框架基础基于[GameFramework跳转](https://github.com/EllanJiang/GameFramework)  
 
 ### 行业信息  
   
-***​不要只顾低头赶路，也要抬头看看远方***   
+<u>​不要只顾低头赶路，也要抬头看看远方</u>   
 
-游戏行业数据[游鲨游戏行业数据跳转](https://www.kdocs.cn/l/ct4bcS9xHD3K)   
-游戏行业分析[Sensortower跳转](https://sensortower.com/)   
-记得多玩游戏[Steam跳转](https://store.steampowered.com/)   
+* 游戏行业数据 [游鲨游戏行业数据跳转](https://www.kdocs.cn/l/ct4bcS9xHD3K)   
+* 游戏行业分析 [Sensortower跳转](https://sensortower.cn/zh-CN/blog)   
+* 记得多玩游戏 [Steam跳转](https://store.steampowered.com)   
+
+<u>世界就是个草台班子</u>
+
+
+### 参考  
+代码热更基于 [HybridCLR跳转](https://github.com/focus-creative-games/HybridCLR)  
+资源热更基于 [YooAsset跳转](https://www.yooasset.com/)     
+框架基础基于 [GameFramework跳转](https://github.com/EllanJiang/GameFramework)  
