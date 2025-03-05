@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c502f0e7aa4c49e4a99da12ede7fa8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BuildInfoTextAsset: {fileID: 4900000, guid: 247c6b81e258656418deff7861816d33, type: 3}
+  m_BuildInfoTextAsset: {fileID: 4900000, guid: f3370005cfab5d546bc398a026bbfae4, type: 3}
   m_DefaultDictionaryTextAsset: {fileID: 4900000, guid: 9649279ea3b34d141b0aac3f46d82aef, type: 3}
   m_UpdateResourceFormTemplate: {fileID: 4863827266948120156, guid: 065453d18e51b5940b16de60e8f371f9, type: 3}
 --- !u!1 &434310078
