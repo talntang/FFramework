@@ -162,7 +162,7 @@ namespace Flower
 
             m_CanvasGroup.alpha = 0f;
             StopAllCoroutines();
-            StartCoroutine(m_CanvasGroup.FadeToAlpha(1f, FadeTime));
+            StartCoroutine(m_CanvasGroup?.FadeToAlpha(1f, FadeTime));
         }
 
 #if UNITY_2017_3_OR_NEWER

@@ -267,7 +267,6 @@ namespace UnityGameFramework.Runtime
                     default:
                         break;
                 }
-                asyncOperation.UnloadAsync();
             };
         }
 
