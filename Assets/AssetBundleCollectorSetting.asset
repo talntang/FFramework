@@ -61,7 +61,7 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/GameRes/Item
+      - CollectPath: Assets/GameRes/Tile
         CollectorGUID: 01ea0a02041ef0c498550171cb6d879c
         CollectorType: 0
         AddressRuleName: AddressByFolderAndFileName
