@@ -35,7 +35,8 @@ namespace UnityGameFramework.Runtime
 
         public void ForceUnloadUnusedAssets(bool isForce)
         {
-            // TODO
+            var package = YooAssets.GetPackage("DefaultPackage");
+            var operation = package.UnloadUnusedAssetsAsync();
         }
 
         /// <summary>
@@ -138,7 +139,8 @@ namespace UnityGameFramework.Runtime
         public void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks, object userData)
         {
             var startTime = DateTime.UtcNow;
-            YooAssets.LoadAssetAsync<UnityEngine.Object>(assetName).Completed += result =>
+            var handle = YooAssets.LoadAssetAsync<UnityEngine.Object>(assetName);
+            handle.Completed += result =>
             {
                 switch (result.Status)
                 {
@@ -156,6 +158,7 @@ namespace UnityGameFramework.Runtime
                     default:
                         break;
                 }
+                handle.Release();
             };
         }
 
@@ -165,7 +168,8 @@ namespace UnityGameFramework.Runtime
         /// <param name="asset">要卸载的资源。</param>
         public void UnloadAsset(object asset)
         {
-            // Do nothing in editor resource mode.
+            var package = YooAssets.GetPackage("DefaultPackage");
+            package.UnloadUnusedAssetsAsync();
         }
 
         /// <summary>
@@ -263,6 +267,7 @@ namespace UnityGameFramework.Runtime
                     default:
                         break;
                 }
+                asyncOperation.UnloadAsync();
             };
         }
 
@@ -282,7 +287,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="sceneAssetName">要卸载场景资源的名称。</param>
         /// <param name="unloadSceneCallbacks">卸载场景回调函数集。</param>
         /// <param name="userData">用户自定义数据。</param>
-        public async void UnloadScene(string sceneAssetName, UnloadSceneCallbacks unloadSceneCallbacks, object userData)
+        public void UnloadScene(string sceneAssetName, UnloadSceneCallbacks unloadSceneCallbacks, object userData)
         {
             if (string.IsNullOrEmpty(sceneAssetName))
             {
