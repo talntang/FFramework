@@ -23,6 +23,9 @@
 /Assets/HuaTuo
 /*.csproj
 /*.sln
+__pycache__/
+*.pyc
+*.db
 /Build-Win64-2
 /Build-Android2
 /Build-Android-2020.3.33
