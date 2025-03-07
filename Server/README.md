@@ -63,7 +63,6 @@ game_backend/
 ```http
 POST /api/users/register
 Content-Type: application/json
-
 {
     "username": "testuser",
     "email": "test@example.com",
@@ -76,7 +75,6 @@ Content-Type: application/json
 POST /api/users/token
 Content-Type: application/x-www-form-urlencoded
 
-username=testuser&password=password123
 ```
 
 ## 开发说明
