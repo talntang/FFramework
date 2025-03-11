@@ -16,19 +16,19 @@
 以及行为准则，例如加载场景必须用框架的xxx接口，贴图必须放在xxx文件夹下等  
 （2）性能优化：CPU；GPU；内存   
 （3）埋点及数据分析，协助运营及发行及时了解游戏运行状况。  
-等一些列游戏项目开发中的知识点     
-[【代码混淆】](Tools/ReadMe/UnityObfuscator.md)        [【小红点跳转】](Tools/ReadMe/RedPoint.md)    
-[【SDK跳转】](Tools/ReadMe/SDK.md)         [【循环列表跳转】](Tools/ReadMe/LoopScrollRect.md)   
-[【新手引导跳转】](Tools/ReadMe/Guide.md)  [【相机控制跳转】](Tools/ReadMe/Camera.md)   
-[【导航模块跳转】](Tools/ReadMe/Nav.md)  [【技能系统跳转】](Tools/ReadMe/Skill.md)   
-[【动画模块跳转】](Tools/ReadMe/Animation.md)   [【网络模块跳转】](Tools/ReadMe/Net.md)   
+等一些列游戏项目开发中的知识点：     
+[【代码混淆 跳转】](Tools/ReadMe/UnityObfuscator.md)        [【小红点 跳转】](Tools/ReadMe/RedPoint.md)    
+[【SDK 跳转】](Tools/ReadMe/SDK.md)         [【循环列表 跳转】](Tools/ReadMe/LoopScrollRect.md)   
+[【新手引导 跳转】](Tools/ReadMe/Guide.md)  [【相机控制 跳转】](Tools/ReadMe/Camera.md)   
+[【导航模块 跳转】](Tools/ReadMe/Nav.md)  [【技能系统 跳转】](Tools/ReadMe/Skill.md)   
+[【动画模块 跳转】](Tools/ReadMe/Animation.md)   [【网络模块 跳转】](Tools/ReadMe/Net.md)   
   
 ---
 
 ## 二、项目包含一个完整的小游戏实例  
 
 ### 游戏介绍  
-基于GameFramework框架实现的塔防游戏，将资源模块改为YooAsset，并接入HybridCLR代码热更。  
+基于GameFramework框架实现的塔防游戏，并实现无冗余资源管理及代码热更。  
 
 ![Image](Tools/ReadMe/TowerDefense.png)   
    
@@ -46,19 +46,19 @@
 ## 三、如何让项目运行并实现热更及资源管理  
 
 ### 游戏入口流程
-(1)在Main场景下，对资源进行预下载（可以通过玩家的UID添加白名单测试）    
-(2)加载完资源会调用初始化LoadDll,加载热更Dll   
-(3)加载完Dll切换热更场景，进入热更模块   
+(1)在Main场景下，对资源及代码进行热更新（可以通过玩家的UID添加白名单测试）    
+(2)加载完资源会调用初始化LoadDll，加载热更Dll   
+(3)加载完Dll切换游戏场景，进入游戏模块   
 
 ### 资源管理操作
 点击执行YooAsset/AssetBundle Collector，用于管理资源，这里通过成品资源对生资源依赖，进行加载，实现包体内零冗余   
 (1)实现了启动场景热更新，在第二次进入游戏时实现更新  
 (2)实现了玩家边玩边下载  
 (3)玩家自己选择下载关卡内容  
-注意：生资源，成品资源路径区分  
+注意：生资源，成品资源路径区分。 **生资源组成成品资源，生资源为不会动态加载的资源**   
 
 ### HybridCLR编辑器操作
-(1)点击执行HybridCLR/Installer打开一个窗体，点击Install等待安装完成  
+(1)点击执行HybridCLR/Installer打开一个窗体，点击Install等待安装完成   
 (2)点击执行HybridCLR/Generate/All, 等待执行完毕    
 (3)点击执行HybridCLR/Build/BuildAssetsAndCopyToRes,将Dll生成并拷贝到资源文件夹中   
 
